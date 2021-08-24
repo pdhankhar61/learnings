@@ -48,7 +48,7 @@ const generate_push_subscription_object = async function subscribe() {
 			const subscribeOptions = {
 				userVisibleOnly: true,
 				applicationServerKey:
-					urlBase64ToUint8Array('BEPn-DFD4Z8nmaRrTi-N75tEQY2FDhZdpxH39_Iv7098kclC6dVfI3TFOFz-xcWWQ0VKAePV9T7vq450xMFPCqA')
+					urlBase64ToUint8Array('add yours')
 			};
 
 			return registration.pushManager.subscribe(subscribeOptions);
@@ -62,7 +62,7 @@ const generate_push_subscription_object = async function subscribe() {
 
 // sending push subscription object to express/nodejs server
 function sendSubscriptionToBackEnd(data) {
-	return fetch('https://QuietCarpalPredictions.pdhankhar61.repl.co/api/save-subscription/', {
+	return fetch('add your own api', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'

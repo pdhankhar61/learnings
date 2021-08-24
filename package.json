@@ -1,0 +1,19 @@
+{
+  "name": "QuietCarpalPredictions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@replit/database": "^2.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "web-push": "^3.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
 // passing public and private key to webpush
 webpush.setVapidDetails(
 	'mailto:example@yourdomain.org',
-	'BEPn-DFD4Z8nmaRrTi-N75tEQY2FDhZdpxH39_Iv7098kclC6dVfI3TFOFz-xcWWQ0VKAePV9T7vq450xMFPCqA',
-	'CY8yJvwB08IKAmgvwyiVzsIo_CnhDYE4RK2iu9WsOwA'
+	'publicKey',
+	'privateKey'
 );
 
 

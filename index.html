@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>audio api</title>
+</head>
+
+<body>
+	<div style="display:flex;align-items:center;justify-content:center;height:100vh">
+		<div>
+			<div>
+				<b>Image Input</b>
+			</div>
+			<br>
+			<input type="file" accept="image/*">
+			<br>
+			<br>
+			<div>
+				<b>Audio</b>
+			</div>
+				<br>
+				<div>
+					<a id="download">Download</a>
+					<button id="stop">Stop</button>
+				</div>
+		</div>
+</div>
+
+
+<script>
+  const downloadLink = document.getElementById('download');
+  const stopButton = document.getElementById('stop');
+
+
+  const handleSuccess = function(stream) {
+		
+    const options = {mimeType: 'audio/webm'};
+    const recordedChunks = [];
+    const mediaRecorder = new MediaRecorder(stream, options);
+
+    mediaRecorder.addEventListener('dataavailable', function(e) {
+      if (e.data.size > 0) recordedChunks.push(e.data);
+    });
+
+    mediaRecorder.addEventListener('stop', function() {
+      downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+      downloadLink.download = 'acetest.wav';
+    });
+
+    stopButton.addEventListener('click', function() {
+      mediaRecorder.stop();
+    });
+
+    mediaRecorder.start();
+  };
+
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      .then(handleSuccess);
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

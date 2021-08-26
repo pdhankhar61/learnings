@@ -4,72 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>video api</title>
+	<title>File Downloading With nodejs</title>
 </head>
 
 <body>
-	<p><button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>&nbsp;<a id="download">Download</a></p>
-<video id="video" style="width:98%; max-width:800px " autoplay></video>
 
-<script>
-
-const videoElem = document.getElementById("video");
-const downloadLink = document.getElementById('download');
-const startCapture = document.getElementById('start');
-const stopCapture = document.getElementById('stop');
-let stopped =false;
-let device=[];
-
-let mediaRecorder ;
-
-const handleSuccess = function (stream) {
-	const options = { mimeType: 'video/webm' };
-	mediaRecorder= new MediaRecorder(stream, options);
-	const recordedChunks = [];
-
-
-	mediaRecorder.addEventListener('dataavailable', function (e) {
-		if (e.data.size > 0) recordedChunks.push(e.data);
-	});
-
-	mediaRecorder.addEventListener('stop', function () {
-		downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-		downloadLink.download = 'acetest.webm';
-	});
-
-	mediaRecorder.start();
-};
-
-
-
-startCapture.addEventListener("click",()=>{
-
-navigator.mediaDevices.enumerateDevices().then((devices) => {
-device.push(devices.filter((d) => d.kind === 'audiooutput'));
-});
-
-navigator.mediaDevices.getDisplayMedia({video: {cursor: "always"}}).then((stream)=>{
-	videoElem.srcObject=stream;
-	handleSuccess(stream)
-}) 
-})
-
-stopCapture.addEventListener("click",(evt)=> {
-
-if(stopped===false){
-		mediaRecorder.stop();
-		stopped=true;
-}
-
-  let tracks = videoElem.srcObject.getTracks();
-
-  tracks.forEach(track => track.stop());
-  videoElem.srcObject = null;
-});
-
-
-</script>
-
+<a href="https://quietcarpalpredictions.pdhankhar61.repl.co/hello.cpp" download="hello.cpp">Download File</a>
 
   </body>
 </html>
